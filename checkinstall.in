@@ -2190,14 +2190,14 @@ chmod 755 $BUILD_DIR
 export TAR
 
 if [ $SHOW_MAKEPKG -gt 0 ]; then
-   $MAKEPKG $MAKEPKG_FLAGS "${SLACK_PKG_BASENAME}.tgz"
+   $MAKEPKG $MAKEPKG_FLAGS ${TMP_DIR}/"${SLACK_PKG_BASENAME}.tgz"
    okfail
 else
-   $MAKEPKG $MAKEPKG_FLAGS "${SLACK_PKG_BASENAME}.tgz" &> /dev/null
+   $MAKEPKG $MAKEPKG_FLAGS ${TMP_DIR}/"${SLACK_PKG_BASENAME}.tgz" &> /dev/null
    okfail
 fi
 
-mv "${SLACK_PKG_BASENAME}.tgz" "$DIRECTORIO_FUENTE"
+mv ${TMP_DIR}/"${SLACK_PKG_BASENAME}.tgz" "$DIRECTORIO_FUENTE"
 
 #
 # If requested, we install the package to register it in Slackware's
