@@ -19,6 +19,7 @@ all:
 			;; \
 		esac ; \
 	done	
+	sed 's%MAKEFILE_PREFIX%$(PREFIX)%g' checkinstall.in > checkinstall
 	$(MAKE) -C installwatch
 	
 install: all
@@ -26,7 +27,7 @@ install: all
 	$(MAKE) -C installwatch install
 	
 	mkdir -p $(BINDIR)
-	install checkinstall makepak $(BINDIR)
+	install -m 0755 -o root -g root checkinstall makepak $(BINDIR)
 	for file in locale/*.mo ; do \
 		LANG=`echo $$file | sed -e 's|locale/checkinstall-||' \
 			-e 's|\.mo||'` && \
@@ -55,7 +56,7 @@ install: all
 	fi
 	
 clean:
-	for file in locale/checkinstall-*.mo ; do \
+	for file in locale/checkinstall-*.mo checkinstall ; do \
 		rm -f $${file} ; \
 	done
 	$(MAKE) -C installwatch clean

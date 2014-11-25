@@ -61,8 +61,7 @@ function followlinks () {
     fi
 }
 
-INSTALLDIR=`followlinks "$0"`
-INSTALLDIR=`dirname "$INSTALLDIR"`/..
+INSTALLDIR=MAKEFILE_PREFIX
 
 # gettext variables
 export TEXTDOMAINDIR="$INSTALLDIR"/lib/checkinstall/locale
@@ -492,7 +491,7 @@ function copy_dir_hierarchy {
 ckversion
 echo
 
-CHECKINSTALLRC=${CHECKINSTALLRC:-${INSTALLDIR}/checkinstallrc}
+CHECKINSTALLRC=${CHECKINSTALLRC:-${INSTALLDIR}/lib/checkinstall/checkinstallrc}
 if ! [ -f $CHECKINSTALLRC ]; then
    echog "The checkinstallrc file was not found at:\n$CHECKINSTALLRC"
    echo
