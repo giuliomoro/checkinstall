@@ -2554,6 +2554,8 @@ FILE *fopen(const char *pathname, const char *mode) {
 	if (!libc_handle)
 		initialize();
 
+        result = NULL;
+
 #if DEBUG
 	debug(2,"fopen(%s,%s)\n",pathname,mode);
 #endif
