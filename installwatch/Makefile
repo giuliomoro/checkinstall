@@ -40,7 +40,7 @@ uninstall:
 	rm -f $(BINDIR)/installwatch
 	
 clean:
-	rm -f *~ *.bak *.o installwatch.so core localdecls.h libctest test-installwatch
+	rm -f *~ *.bak *.o installwatch.so core localdecls.h libcfiletest libctest test-installwatch
 
 tarball: clean
 	tar -czvC .. -f ../installwatch-$(VERSION).tar.gz installwatch-$(VERSION)
