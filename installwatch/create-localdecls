@@ -43,7 +43,7 @@ fi
 ###
 ###
 
-echo -n 'Checking which libc whe are using... '
+echo -n 'Checking which libc we are using... '
 gcc -Wall -o libcfiletest libcfiletest.c
 LIBC_FILE=`ldd libcfiletest | grep libc\\.so | awk '{print $1}'`
 echo $LIBC_FILE
