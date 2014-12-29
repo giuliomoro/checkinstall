@@ -2575,7 +2575,7 @@ mkdir $BUILD_DIR/DEBIAN
 cat << EOF | sed "s/ $//" | egrep ": " >> $BUILD_DIR/DEBIAN/control
 Package: $PKG_BASENAME
 Priority: extra
-Section: $PKG_GROUP
+Section: $(echo $PKG_GROUP | tr '\n' ' ')
 Installed-Size: `du -s $BUILD_DIR | awk '{print $1}'`
 Maintainer: $MAINTAINER
 Architecture: $ARCHITECTURE
