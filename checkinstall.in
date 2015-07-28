@@ -472,7 +472,7 @@ function copy_dir_hierarchy {
     # Only use tar if there are parents
     echo "${files}" | egrep '[^[:space:]]' >/dev/null
     if [ $? -eq 0 ]; then
-        if [ deref_parents -eq 1 ]; then
+        if [ $deref_parents -eq 1 ]; then
             # Add the -h option to the tar command for dereferencing
             $TAR --no-recursion -C "${root}" -cphf - $files | $TAR -f - -xvpC \
                 "${dest}"
