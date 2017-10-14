@@ -3746,6 +3746,9 @@ int __xstat64(int version,const char *pathname,struct stat64 *info) {
 	instw_t instw;
 	int status;
 
+	if (!libc_handle)
+	    initialize();
+
 #if DEBUG
 	debug(2,"stat64(%s,%p)\n",pathname,info);
 #endif
